@@ -13,5 +13,6 @@
         <property name="show_sql">true</property>
         <mapping resource="models/Studio"/>
         <mapping resource="models/Actor"/>
+        <mapping resource="models/models.Director"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,5 @@
 import models.Actor;
+import models.Director;
 import models.Studio;
 import org.junit.Test;
 
