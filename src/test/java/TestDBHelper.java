@@ -1,6 +1,6 @@
+import db.DBHelper;
 import models.Actor;
 import models.Director;
-import models.Film;
 import models.Studio;
 import org.junit.Test;
 
@@ -26,6 +26,6 @@ public class TestDBHelper {
     @Test
     public void testCanSave() {
         DBHelper.saveUpdate(keanu);
-        assertEquals(1, DBHelper.getAll(Actor.class));
+        assertEquals(1, DBHelper.getAll(Actor.class).size());
     }
 }
