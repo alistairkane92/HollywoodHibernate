@@ -1,7 +1,12 @@
 import models.Actor;
 import models.Director;
+import models.Film;
 import models.Studio;
 import org.junit.Test;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,7 +20,8 @@ public class TestDBHelper {
     Director wachowski1 = new Director("Lilly", 50000);
     Director wachowski2 = new Director("Lana", 50000);
 
-    Film film = new Film("The Matrix", 63000000, filmActors, directorList);
+    List<Actor> filmActors = new ArrayList<Actor>();
+    List<Director> directors = new ArrayList<Director>();
 
     @Test
     public void testCanSave() {
