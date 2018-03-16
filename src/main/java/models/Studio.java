@@ -12,6 +12,9 @@ public class Studio {
         this.location = location;
     }
 
+    public Studio() {
+    }
+
     public int getId() {
         return id;
     }

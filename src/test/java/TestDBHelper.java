@@ -1,3 +1,4 @@
+import models.Actor;
 import models.Studio;
 import org.junit.Test;
 
@@ -18,6 +19,6 @@ public class TestDBHelper {
     @Test
     public void testCanSave() {
         DBHelper.saveUpdate(keanu);
-        assertEquals(1, DBHelper.getAll(Actor));
+        assertEquals(1, DBHelper.getAll(Actor.class));
     }
 }
