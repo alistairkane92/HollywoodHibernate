@@ -1,5 +1,9 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="actors")
 public class Actor {
     private int id;
     private String firstName;
@@ -15,6 +19,9 @@ public class Actor {
     public Actor() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -23,6 +30,7 @@ public class Actor {
         this.id = id;
     }
 
+    @Column(name="firstNames")
     public String getFirstName() {
         return firstName;
     }
@@ -31,6 +39,7 @@ public class Actor {
         this.firstName = firstName;
     }
 
+    @Column(name="surnames")
     public String getSurName() {
         return surName;
     }
@@ -39,6 +48,7 @@ public class Actor {
         this.surName = surName;
     }
 
+    @Column(name="finances")
     public int getFinances() {
         return finances;
     }
