@@ -9,11 +9,13 @@ public class Actor {
     private String firstName;
     private String surName;
     private int finances;
+    private Film film;
 
-    public Actor(String firstName, String surName, int finances) {
+    public Actor(String firstName, String surName, int finances, Film film) {
         this.firstName = firstName;
         this.surName = surName;
         this.finances = finances;
+        this.film = film;
     }
 
     public Actor() {
@@ -55,5 +57,15 @@ public class Actor {
 
     public void setFinances(int finances) {
         this.finances = finances;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="film_id", nullable = false)
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
     }
 }

@@ -1,18 +1,29 @@
 package models;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name="directors")
 public class Director {
     private int id;
-    private String name;
+    private String firstName;
+    private String surName;
     private int finances;
+    private List<Film> films;
 
-    public Director(String name, int finances) {
-        this.name = name;
+    public Director(String firstName, String surName, int finances) {
+        this.firstName = firstName;
+        this.surName = surName;
         this.finances = finances;
     }
 
     public Director() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -21,19 +32,39 @@ public class Director {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    @Column(name="firstName")
+    public String getFirstName() {
+        return this.firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String name) {
+        this.firstName = name;
     }
 
+    @Column(name="surname")
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
+
+    @Column(name="finances")
     public int getFinances() {
         return finances;
     }
 
     public void setFinances(int finances) {
         this.finances = finances;
+    }
+
+    @OneToMany(mappedBy = "director")
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
     }
 }

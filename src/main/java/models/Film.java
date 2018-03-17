@@ -1,27 +1,38 @@
 package models;
 
-import models.Actor;
-import models.Director;
-
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name="films")
 public class Film {
     private int id;
     private String name;
     private int budget;
     private List<Actor> actors;
-    private List<Director> directors;
+    private Director director;
 
-    public Film(String name, int budget, List<Actor> actors, List<Director> directors) {
+    public Film(String name, int budget, Director director) {
         this.name = name;
         this.budget = budget;
-        this.actors = actors;
-        this.directors = directors;
+        this.director = director;
     }
 
     public Film() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -30,6 +41,7 @@ public class Film {
         this.name = name;
     }
 
+    @Column(name="budget")
     public int getBudget() {
         return budget;
     }
@@ -38,19 +50,20 @@ public class Film {
         this.budget = budget;
     }
 
-    public List<Actor> getActors() {
-        return actors;
-    }
+    @OneToMany(mappedBy = "film", fetch = FetchType.EAGER)
+    public List<Actor> getActors() { return actors; }
 
     public void setActors(List<Actor> actors) {
         this.actors = actors;
     }
 
-    public List<Director> getDirectors() {
-        return directors;
+    @ManyToOne
+    @JoinColumn(name="director_id", nullable = false)
+    public Director getDirector() {
+        return director;
     }
 
-    public void setDirectors(List<Director> directors) {
-        this.directors = directors;
+    public void setDirector(Director director) {
+        this.director = director;
     }
 }
